@@ -1,4 +1,11 @@
-
 <view class="container">
-  
+	<view class="wait_to show_block">
+		<block>今日待办</block>
+	</view>
+	<view class="is_done show_block">
+		<block>已完成</block>
+	</view>
+	<view class="add_todo show_block">
+		<block>添加新待办</block>
+	</view>
 </view>

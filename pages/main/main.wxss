@@ -1,3 +1,24 @@
 /*main.wxss*/
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.show_block {
+  width: 75%;
+  height: 300rpx;
+  text-align: center;
+  line-height: 300rpx;
+  margin-bottom: 10rpx;
+  border-radius: 2%;
+}
+.wait_to {
+  background-color: red;
+}
 
+.is_done {
+  background-color: salmon;
+}
 
+.add_todo {
+  background-color: skyblue;
+} 

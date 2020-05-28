@@ -10,6 +10,21 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res);
+        wx.request({
+          url: 'https://www.cloudykz.top/wxProject',
+          data: {
+            appid: 'wx280f9b26f309bc44',
+            code: res.code
+          },
+          method: 'GET',
+          success: opneIdRes => {
+            console.log(opneIdRes)
+          },
+          fail: err => {
+            console.log(err)
+          }
+        })
       }
     })
     // 获取用户信息
