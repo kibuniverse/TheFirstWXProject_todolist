@@ -23,7 +23,7 @@ server.use('/', (req, res) => {
                 grant_type:  'authorization_code'
         }}).then(value => {
                 console.log(value);
-                res.send(`用户openid为${value.data.openid}`);
+                res.send(`{"ok": true, "userId": "${value}"}`);
                 res.end();
         }).catch(err => {
                 console.log(err);

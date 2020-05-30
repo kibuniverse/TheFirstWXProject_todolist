@@ -10,7 +10,6 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res);
         wx.request({
           url: 'https://www.cloudykz.top/wxProject',
           data: {
@@ -18,8 +17,9 @@ App({
             code: res.code
           },
           method: 'GET',
-          success: opneIdRes => {
-            console.log(opneIdRes)
+          success: openIdRes => {
+            console.log(openIdRes.data);
+            this.globalData.userOpenId = openIdRes.data.userId;
           },
           fail: err => {
             console.log(err)
@@ -49,6 +49,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userOpenId: null,
   }
 })

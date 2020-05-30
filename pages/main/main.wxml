@@ -1,11 +1,11 @@
 <view class="container">
-	<view class="wait_to show_block">
-		<block>今日待办</block>
+	<view class="wait_to show_block" bindtap="bindtapTodo">
+		<block>待办</block>
 	</view>
-	<view class="is_done show_block">
+	<view class="is_done show_block" bindtap="bindtapIsDone" >
 		<block>已完成</block>
 	</view>
-	<view class="add_todo show_block">
+	<view class="add_todo show_block" bindtap="bindtapAddNew">
 		<block>添加新待办</block>
 	</view>
 </view>
