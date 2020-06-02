@@ -1,3 +1,5 @@
+const app = getApp();
+
 // pages/wait_todo/wait_todo.js
 Page({
 
@@ -5,21 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    todoArray: null,
   },
-
+  bindtapEvent(e) {
+    console.log(e.detail);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      todoArray: app.globalData.todoList,
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

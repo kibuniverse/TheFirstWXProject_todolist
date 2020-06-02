@@ -11,7 +11,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://www.cloudykz.top/wxProject',
+          url: 'https://www.cloudykz.top/getUserId',
           data: {
             appid: 'wx280f9b26f309bc44',
             code: res.code
@@ -19,7 +19,9 @@ App({
           method: 'GET',
           success: openIdRes => {
             console.log(openIdRes.data);
-            this.globalData.userOpenId = openIdRes.data.userId;
+            this.globalData.userId = openIdRes.data.userId;
+            // 得到用户id后根据id查询事件， 优化后续体验
+            this.getTodoList();
           },
           fail: err => {
             console.log(err)
@@ -48,8 +50,25 @@ App({
       }
     })
   },
+  getTodoList() {
+    wx.request({
+      url: 'https://www.cloudykz.top/getUserTodoThing',
+      data: {
+        userId: this.globalData.userId,
+      },
+      method: 'get',
+      success: res => {
+        console.log(res);
+        this.globalData.todoList = res.data;
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
+  },
   globalData: {
     userInfo: null,
-    userOpenId: null,
+    userId: null,
+    todoList: null,
   }
 })

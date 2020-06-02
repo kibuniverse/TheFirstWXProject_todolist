@@ -1,1 +1,11 @@
 /* pages/addnew/addnew.wxss */
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.todo_thing  {
+  border: 1rpx solid gray;
+  margin-bottom: 10rpx;
+}

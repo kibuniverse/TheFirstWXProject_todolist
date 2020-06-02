@@ -1,5 +1,4 @@
-const http = require('http');
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
 const querystring = require('querystring');
 const urlLib = require('url');
 const express = require('express');

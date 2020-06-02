@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/addnew/addnew.js
 Page({
 
@@ -5,9 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    chose_date: new Date().toString,
+    todo_thing: '把重要的事情记录下来吧'
+  },
+  bindBeginTimeChange(e) {
+    console.log(`修改截至日期为:${e.detail.value}`);
+    this.setData({
+      chose_date: e.detail.value
+    })
   },
 
+  formSubmit(e) {
+    console.log(e.detail.value);
+    if(e.detail.value.eventMessage.length == 0) {
+      console.log('事件不能为空呦~')
+    } else {
+      let sendData = e.detail.value;
+      this.judgeDate(sendData);
+      sendData.userId = app.globalData.userId;
+      this.sendNewthingToServer(sendData);
+    }
+    
+  },
+  judgeDate(sendData) {
+    if(sendData.endTime == null) {
+      sendData.endTime = '2030-06-03';
+    }  
+  },
+  sendNewthingToServer(sendData) {
+    wx.request({
+      url: 'https://www.cloudykz.top/addNewThing',
+      data: sendData,
+      method: 'GET',
+      success: res => {
+        console.log(res);
+        wx.navigateBack({ 
+          complete: (res) => {
+            console.log(res);
+            app.getTodoList();
+          },
+        })
+      },
+      fail: err => {
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -62,5 +106,7 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  
 })

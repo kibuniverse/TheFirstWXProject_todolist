@@ -1,4 +1,18 @@
 <!--pages/addnew/addnew.wxml-->
-<text>pages/addnew/addnew.wxml</text>
 
-<view></view>
+<view class="container">
+  <form catchsubmit="formSubmit">
+    <view class="page_select_title">事件内容: </view>
+     <textarea class="todo_thing" name="eventMessage" placeholder="{{todo_thing}}"></textarea>
+    <view>
+    <picker name="endTime" mode="date" value="{{chose_date}}" bindchange="bindBeginTimeChange">
+      <view class="picker">
+        点我设置截至日期: {{chose_date}}
+      </view>
+    </picker>
+     <view class="btn-area">
+        <button style="margin:50rpx auto" type="primary" formType="submit">Submit</button>
+      </view>
+    </view>
+  </form>
+</view>

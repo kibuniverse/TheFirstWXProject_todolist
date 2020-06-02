@@ -1,2 +1,8 @@
 <!--pages/wait_todo/wait_todo.wxml-->
-<text>pages/wait_todo/wait_todo.wxml</text>
+
+
+<view class="container">
+  <view wx:for="{{todoArray}}" wx:key="id" bindtap="bindtapEvent">
+    {{item.eventMessage}}
+  </view>
+</view>
