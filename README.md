@@ -1,6 +1,10 @@
 # 此仓库为第一次写微信小程序的仓库
 
-  ![](https://img.shields.io/badge/npm-6.13.4-orange) ![](https://img.shields.io/badge/pm2-4.2.3-brightgreen)  ![](https://img.shields.io/badge/node-v12.15.0-blue)![](https://img.shields.io/badge/weChat-v1.03-green)   ![](https://img.shields.io/badge/nginx-1.6.1-brightgreen)
+
+
+[![npm_version](https://img.shields.io/badge/npm-6.13.4-orange)](https://www.npmjs.com/)
+
+ ![](https://img.shields.io/badge/pm2-4.2.3-brightgreen)  ![](https://img.shields.io/badge/node-v12.15.0-blue)![](https://img.shields.io/badge/weChat-v1.03-green)   ![](https://img.shields.io/badge/nginx-1.6.1-brightgreen)
 
 ## 此项目实现了简单的类似todolist的功能，一是为了巩固一下微信小程序开发的知识，避免后期在重新开发时遇到各种坑，二是锻炼实践es6语法
 
