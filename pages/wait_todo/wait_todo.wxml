@@ -2,7 +2,8 @@
 
 
 <view class="container">
-  <view wx:for="{{todoArray}}" wx:key="id" bindtap="bindtapEvent">
-    {{item.eventMessage}}
+  <view wx:for="{{todoArray}}" wx:key="id" class="todo_thing_list_style">
+    <switch bindtap="bindtapEvent" data-id="{{item.id}}"></switch>
+    <view > {{item.eventMessage}}</view>
   </view>
 </view>
