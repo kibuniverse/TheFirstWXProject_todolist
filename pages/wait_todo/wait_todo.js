@@ -21,6 +21,28 @@ Page({
       method: 'get',
       success: res => {
         console.log(res);
+        if(res.data.ok) {
+          this.updataTodoList();
+        }
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
+  },
+  updataTodoList() {
+    wx.request({
+      url: 'https://www.cloudykz.top/getUserTodoThing',
+      data: {
+        userId: app.globalData.userId,
+      },
+      method: 'get',
+      success: res => {
+        console.log(res);
+        app.globalData.todoList = res.data;
+        this.setData({
+          todoArray: app.globalData.todoList.filter(item => {return item.isDelete == 0 && item.isDone == 0 && this.judgeTime(item.endTime)}),
+        })
       },
       fail: err => {
         console.log(err);

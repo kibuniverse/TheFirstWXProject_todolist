@@ -3,22 +3,50 @@ const urlLib = require('url');
 const express = require('express');
 const query = require('../utils/mysql');
 var server = express();
-// 跨域已在nginx中处理
+
 server.use('/', (req, res) => {
   let data = querystring.parse(urlLib.parse(req.url).query);
   console.log(data);
   data.way == 'delete' ? deleteEvent(data.eventId, (err, vals) => {
-
+    if(err) {
+      console.log('事件删除失败');
+      console.log(err);
+      res.send(`{"ok": false, "msg": "事件删除失败"}`); 
+    } else {
+      console.log('事件删除成功');
+      console.log(vals);
+      res.send(`{"ok": true, "msg": "事件删除成功"}`);
+    }
+    res.end();
   }) 
-  : changeEventStatus(data.id, data.way, (err, vals) => {
-    
+  : changeEventStatus(data.eventId, (err, vals) => {
+    if(err) {
+      console.log('修改时间状态失败');
+      console.log(err);
+      res.send(`{"ok": false, "msg": "修改时间状态失败"}`); 
+    } else {
+      console.log('修改时间状态成功');
+      console.log(vals);
+      res.send(`{"ok": true, "msg": "修改时间状态成功"}`);
+    }
+    res.end();
   });
+  res.end();
 });
 
 
 function changeEventStatus(eventId,  callback) {
   getEventId(eventId).then((vals) => {
-    console.log(vals);
+    console.log(vals[0]);
+    let intoData = vals[0].isDone;
+    intoData == 0 ? intoData = 1 : intoData = 0;
+    let sql = {
+      sql: `UPDATA eventsTable SET isDone = '${intoData}' WHERE id='${eventId}'`
+    };
+    query(sql, (err, vals) => {
+      callback(err, vals);
+    })
+    
   }).catch(err => {
     console.log(err);
   })

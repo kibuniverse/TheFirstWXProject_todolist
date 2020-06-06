@@ -27,7 +27,6 @@ server.use('/', (req, res) => {
     }
     res.end();
   });
-  res.send(`{"ok": true,"msg":"收到请求"}`);
   res.end();
 });
 
@@ -45,5 +44,5 @@ function insertData(data, callback) {
 }
 // nginx 代理
 server.listen(10001, () =>{
-   console.log('监听微信添加数据的端口10001已经打开');
+  console.log('监听微信添加数据的端口10001已经打开');
 });
