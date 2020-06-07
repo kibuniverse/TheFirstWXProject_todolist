@@ -1,1 +1,14 @@
 /* pages/is_done/isdone.wxss */
+.container {
+  padding: 0;
+}
+.todo_thing_list_style {
+  width: 100%;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid gray;
+  text-align: center;
+}
+
+.todo_thing_list_style switch {
+  float: left;
+}

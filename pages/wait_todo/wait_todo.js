@@ -22,7 +22,11 @@ Page({
       success: res => {
         console.log(res);
         if(res.data.ok) {
-          this.updataTodoList();
+          app.getTodoList().then(() => {
+            this.setData({
+              todoArray: app.globalData.todoList.filter(item => {return item.isDelete == 0 && item.isDone == 0 && this.judgeTime(item.endTime)})
+            })
+          })
         }
       },
       fail: err => {
@@ -30,25 +34,7 @@ Page({
       }
     })
   },
-  updataTodoList() {
-    wx.request({
-      url: 'https://www.cloudykz.top/getUserTodoThing',
-      data: {
-        userId: app.globalData.userId,
-      },
-      method: 'get',
-      success: res => {
-        console.log(res);
-        app.globalData.todoList = res.data;
-        this.setData({
-          todoArray: app.globalData.todoList.filter(item => {return item.isDelete == 0 && item.isDone == 0 && this.judgeTime(item.endTime)}),
-        })
-      },
-      fail: err => {
-        console.log(err);
-      }
-    })
-  },
+ 
   judgeTime(time) {
     let [year, month, day] = [...time.slice(0, 10).split('-')];
     console.log(year, month, day);

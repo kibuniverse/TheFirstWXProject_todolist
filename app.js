@@ -51,19 +51,23 @@ App({
     })
   },
   getTodoList() {
-    wx.request({
-      url: 'https://www.cloudykz.top/getUserTodoThing',
-      data: {
-        userId: this.globalData.userId,
-      },
-      method: 'get',
-      success: res => {
-        console.log(res);
-        this.globalData.todoList = res.data;
-      },
-      fail: err => {
-        console.log(err);
-      }
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: 'https://www.cloudykz.top/getUserTodoThing',
+        data: {
+          userId: this.globalData.userId,
+        },
+        method: 'get',
+        success: res => {
+          console.log(res);
+          this.globalData.todoList = res.data;
+          resolve();
+        },
+        fail: err => {
+          console.log(err);
+          reject();
+        }
+      })
     })
   },
   globalData: {

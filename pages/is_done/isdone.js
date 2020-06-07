@@ -1,13 +1,38 @@
 // pages/is_done/isdone.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    todoArray: null,
   },
-
+  bindtapEvent(e) {
+    console.log(e);
+    let changeId = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'https://www.cloudykz.top/changeEventStatus',
+      data: {
+        eventId: changeId,
+        way: 'changestatus',
+      },
+      method: 'get',
+      success: res => {
+        console.log(res);
+        if(res.data.ok) {
+          app.getTodoList().then(() => {
+            this.setData({
+              todoArray: app.globalData.todoList.filter(item => {return item.isDone == 1}),
+            })
+          })
+        }
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,7 +44,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      todoArray: app.globalData.todoList.filter(item => {return item.isDone == 1}),
+    })
   },
 
   /**

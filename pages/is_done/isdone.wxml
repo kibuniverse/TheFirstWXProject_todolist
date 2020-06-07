@@ -1,2 +1,7 @@
 <!--pages/is_done/isdone.wxml-->
-<text>pages/is_done/isdone.wxml</text>
+<view class="container">
+  <view wx:for="{{todoArray}}" wx:key="id" class="todo_thing_list_style">
+    <switch checked="true" bindchange="bindtapEvent" data-id="{{item.id}}"></switch>
+    <view > {{item.eventMessage}}</view>
+  </view>
+</view>
