@@ -39,13 +39,14 @@ Page({
       data: sendData,
       method: 'GET',
       success: res => {
-        console.log(res);
-        wx.navigateBack({ 
-          complete: (res) => {
-            console.log(res);
-            app.getTodoList();
-          },
-        })
+        console.log(res)
+        if(res.data.ok) {
+          wx.navigateBack({
+            complete: (res) => {
+              app.getTodoList();
+            },
+          })
+        }
       },
       fail: err => {
 
