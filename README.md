@@ -1,4 +1,4 @@
-# 此仓库为第一次写微信小程序的仓库
+# 微信小程序 todolist
 
 [![npm_version](https://img.shields.io/badge/npm-6.13.4-orange)](https://www.npmjs.com/)    ![](https://img.shields.io/badge/pm2-4.2.3-brightgreen)    ![](https://img.shields.io/badge/node-v12.15.0-blue)    ![](https://img.shields.io/badge/weChat-v1.03-green)     ![](https://img.shields.io/badge/nginx-1.6.1-brightgreen)
 
@@ -157,7 +157,7 @@ const mysql = require('mysql');
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'Yankaizhi123...',
+  password: 'xxxxxxxxx',
   database: 'wx_project',
   connectionLimit: 1000,
   waitForConnections: true
